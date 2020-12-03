@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
     render json: @categories
   end
 
-  # GET /categories/1
+  # GET /categories/id
   def show
     render json: @category
   end

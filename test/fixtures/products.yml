@@ -4,10 +4,12 @@ one:
   name: MyString
   image: MyString
   price: 1
-  category_id: MyString
+  category: one
+  wishlist: one
 
 two:
   name: MyString
   image: MyString
   price: 1
-  category_id: MyString
+  category: two
+  wishlist: two

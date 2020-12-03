@@ -1,11 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :update, :destroy]
 
-  #added for dropdown menu
-  def new
-    @product = Product.new @categories = Category.all.map{|c| [ c.name, c.id ] }
-  end
-
   # GET /products
   def index
     @products = Product.all
@@ -51,7 +46,6 @@ class ProductsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def product_params
-      params.require(:product).permit(:name, :image, :price, :category_id)
+      params.require(:product).permit(:name, :image, :price, :category_id, :wishlist_id)
     end
-
 end
