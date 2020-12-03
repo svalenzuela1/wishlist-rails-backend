@@ -1,9 +1,10 @@
 class WishlistsController < ApplicationController
   before_action :set_wishlist, only: [:show, :update, :destroy]
+  before_action :authorized
 
   # GET /wishlists
   def index
-    @wishlists = Wishlist.all
+    @wishlists = Wishlist.where(user_id: @user.id)
 
     render json: @wishlists
   end
@@ -16,6 +17,7 @@ class WishlistsController < ApplicationController
   # POST /wishlists
   def create
     @wishlist = Wishlist.new(wishlist_params)
+    @note.user_id = @user.id
 
     if @wishlist.save
       render json: @wishlist, status: :created, location: @wishlist
