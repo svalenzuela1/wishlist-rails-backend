@@ -15,13 +15,36 @@ class ProductsController < ApplicationController
 
   # POST /products
   def create
+
     @product = Product.new(product_params)
 
-    if @product.save
-      render json: @product, status: :created, location: @product
+    if Category.exists?(@product.category_id)
+
+      #receive message on postman
+      if @product.save
+        render :json => {
+            :response => "Product Added",
+            :data => @product
+        }
+      else
+        render :json => {
+            :response => "ERROR: Product not added"
+        }
+      end
     else
-      render json: @product.errors, status: :unprocessable_entity
+      render :json => {
+          :error => 'ERROR: Configure again'
+      }
     end
+    end
+    #scaffold params
+
+    #if @product.save
+    #   render json: @product, status: :created, location: @product
+    #else
+    #   render json: @product.errors, status: :unprocessable_entity
+    #end
+    #
   end
 
   # PATCH/PUT /products/1
