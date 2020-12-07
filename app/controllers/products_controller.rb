@@ -36,7 +36,7 @@ class ProductsController < ApplicationController
           :error => 'ERROR: Configure again'
       }
     end
-    end
+
     #scaffold params
 
     #if @product.save

@@ -42,10 +42,13 @@ class CategoriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_category
       @category = Category.find(params[:id])
+      #@categories = Category.find(params['id'=product])
     end
+
 
     # Only allow a trusted parameter "white list" through.
     def category_params
       params.require(:category).permit(:name, :image)
     end
+
 end
